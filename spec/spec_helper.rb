@@ -1,5 +1,9 @@
+require 'simplecov'
+SimpleCov.start
+
 require "bundler/setup"
 require "log_parser"
+require "helpers"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

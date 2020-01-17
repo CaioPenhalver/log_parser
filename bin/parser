@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "log_parser"
+
+LogParser.metrics(ARGV[0], ARGV[1])
