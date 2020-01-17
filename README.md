@@ -19,6 +19,10 @@ Or install it yourself as:
 
 ## Usage by command line
 
+    $ git clone https://github.com/CaioPenhalver/log_parser.git
+    $ cd log_parser
+    $ bin/setup
+    
     $./bin/parser webserver.log
 
 
