@@ -19,10 +19,8 @@ Or install it yourself as:
 
 ## Usage by command line
 
-    ```sh
-    ./bin/parser webserver.log
+    $./bin/parser webserver.log
 
-    ```
 
 ## License
 
