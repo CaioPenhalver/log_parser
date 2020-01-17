@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe LogParser::Reader do
   after { delete_file }
 
@@ -24,10 +26,9 @@ RSpec.describe LogParser::Reader do
   end
 
   describe '#read' do
-
     class MockStrategy
       attr_reader :lines
-      LINE_MATCHER = { path: /^\S*/, ip: /\S*$/ }.freeze 
+      LINE_MATCHER = { path: /^\S*/, ip: /\S*$/ }.freeze
       def initialize(lines)
         @lines = lines
       end
@@ -39,7 +40,7 @@ RSpec.describe LogParser::Reader do
     it 'should return the strategy used' do
       create_log_file
 
-      expect(subject).to be_a MockStrategy 
+      expect(subject).to be_a MockStrategy
     end
 
     context 'when it is the right pattern' do
@@ -53,16 +54,16 @@ RSpec.describe LogParser::Reader do
       it 'should parse the logs' do
         create_log_file(logs)
 
-        expect(subject.lines).to eq logs 
+        expect(subject.lines).to eq logs
       end
     end
 
     context 'when the pattern does not match' do
       let(:logs) do
-        [ { path: nil, ip: '100.300.005.008' } ]
+        [{ path: nil, ip: '100.300.005.008' }]
       end
       let(:expected_logs) do
-        [ { path: '', ip: '100.300.005.008' } ]
+        [{ path: '', ip: '100.300.005.008' }]
       end
 
       it 'should parse the logs' do

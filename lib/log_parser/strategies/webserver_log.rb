@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
+# Strategy to print metrics for the file webserver.log
 module LogParser
   module Strategies
     class WebserverLog
       attr_accessor :lines
 
-      LINE_MATCHER = { path: /^\S*/, ip: /\S*$/ }.freeze 
+      LINE_MATCHER = { path: /^\S*/, ip: /\S*$/ }.freeze
 
       def initialize(lines = nil)
         @lines = lines
@@ -34,8 +37,8 @@ module LogParser
         log_lines.group_by { |hash| hash[:path] }
       end
 
-      def page_count_views(views)
-        views.each_with_object([]) do |(page, views), metrics|
+      def page_count_views(views_line)
+        views_line.each_with_object([]) do |(page, views), metrics|
           metrics << { number: views.count, page: page }
         end
       end
@@ -49,7 +52,7 @@ module LogParser
       end
 
       def print_format(lines)
-        lines.each {|line| puts "#{line[:page]}: #{line[:number]}"}
+        lines.each { |line| puts "#{line[:page]}: #{line[:number]}" }
         nil
       end
     end

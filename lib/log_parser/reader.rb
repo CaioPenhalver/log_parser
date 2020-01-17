@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class responsible for reading log files
 module LogParser
   class Reader
     def initialize(file)
@@ -20,12 +23,13 @@ module LogParser
     end
 
     private
+
     attr_reader :strategy, :file
 
     def parse(line)
       strategy::LINE_MATCHER
         .each_with_object({}) do |(attr, pattern), hash|
-         hash[attr] = line[pattern]
+        hash[attr] = line[pattern]
       end
     end
   end
